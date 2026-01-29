@@ -1,0 +1,29 @@
+UAD-Shizuku is a cross-platform tool for removing bloatware, scanning FOSS apps, and installing applications via Shizuku or ADB.
+
+<b>Features:</b>
+• Selectively remove bloatware using the Universal Android Debloater list
+• Get SHA256 checksums of installed FOSS Android apps
+• Scan apps with VirusTotal API integration
+• Browse and install FOSS apps from offa's android-foss list
+• Browse and install FOSS apps from FMHY's curated list
+• Install apps through Obtainium
+
+<b>Supported Modes:</b>
+• Android mode (APK) with ADB wireless via Shizuku
+• Desktop mode (binary) with ADB platform-tools for Linux, macOS, and Windows
+
+<b>How it works:</b>
+Connect your Android device via Shizuku (wireless ADB) or use the desktop binary with ADB platform-tools. Browse the bloatware list to selectively disable or remove unwanted system apps. Scan installed apps for security verification or discover new FOSS alternatives from curated lists.
+
+<b>Data Sources:</b>
+• Bloat list from Universal Debloater Alliance
+• FOSS app list from offa's android-foss repository
+• FOSS app list from FMHY's curated mobile recommendations
+
+<b>Supported Platforms:</b>
+• Android (5.0 Lollipop and above)
+• Windows (via ADB platform-tools)
+• macOS (via ADB platform-tools)
+• Linux (via ADB platform-tools)
+
+<b>Privacy:</b> UAD-Shizuku uses publicly available app lists. VirusTotal scanning is optional and requires your own API key. No personal data is collected or transmitted.

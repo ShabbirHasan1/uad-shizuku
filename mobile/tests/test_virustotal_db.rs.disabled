@@ -1,0 +1,41 @@
+use diesel::prelude::*;
+
+#[test]
+fn test_virustotal_table_exists() {
+    // Initialize database
+    uad_shizuku::db_virustotal::init_upsert_queue();
+
+    // Get connection (this will run migrations)
+    let mut conn = uad_shizuku::db::establish_connection();
+
+    // Try to query the virustotal_results table
+    use uad_shizuku::schema::virustotal_results::dsl::*;
+    let results = virustotal_results
+        .limit(1)
+        .load::<uad_shizuku::models::VirusTotalResult>(&mut conn);
+
+    assert!(results.is_ok(), "virustotal_results table should exist");
+}
+
+#[test]
+fn test_virustotal_schema_has_file_path() {
+    let mut conn = uad_shizuku::db::establish_connection();
+
+    // Query the schema to check if file_path column exists
+    let query = diesel::sql_query(
+        "SELECT sql FROM sqlite_master WHERE type='table' AND name='virustotal_results'",
+    );
+
+    let result: Result<Vec<diesel::sql_types::Text>, _> = query.load(&mut conn);
+
+    assert!(result.is_ok(), "Should be able to query sqlite_master");
+
+    if let Ok(schemas) = result {
+        assert!(!schemas.is_empty(), "virustotal_results table should exist");
+        let schema_sql = format!("{:?}", schemas);
+        assert!(
+            schema_sql.contains("file_path"),
+            "Schema should contain file_path column"
+        );
+    }
+}

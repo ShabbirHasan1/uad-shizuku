@@ -1,0 +1,20 @@
+CREATE TABLE hybridanalysis_results (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    package_name TEXT NOT NULL,
+    file_path TEXT NOT NULL,
+    sha256 TEXT NOT NULL,
+    job_id TEXT NOT NULL,
+    environment_id INTEGER NOT NULL,
+    environment_description TEXT NOT NULL,
+    state TEXT NOT NULL,
+    verdict TEXT NOT NULL,
+    threat_score INTEGER,
+    threat_level INTEGER,
+    total_signatures INTEGER,
+    classification_tags TEXT NOT NULL,
+    tags TEXT NOT NULL,
+    raw_response TEXT NOT NULL,
+    created_at INTEGER NOT NULL,
+    updated_at INTEGER NOT NULL,
+    UNIQUE(package_name, file_path, sha256)
+);

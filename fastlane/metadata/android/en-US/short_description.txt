@@ -1,0 +1,1 @@
+Remove bloatware, scan FOSS apps, and install apps via Shizuku/ADB

@@ -1,0 +1,25 @@
+// SVG icons as constants
+pub const FDROID_SVG: &str = include_str!("../resources/fdroid.svg");
+pub const INFO_SVG: &str = include_str!("../resources/info.svg");
+pub const HOME_SVG: &str = include_str!("../resources/home.svg");
+pub const IZZYONDROID_SVG: &str = include_str!("../resources/izzyondroid.svg");
+pub const SOURCE_SVG: &str = include_str!("../resources/source.svg");
+pub const INSTALL_SVG: &str = include_str!("../resources/install.svg");
+pub const REFRESH_SVG: &str = include_str!("../resources/refresh.svg");
+pub const GITHUB_SVG: &str = include_str!("../resources/github.svg");
+pub const GITLAB_SVG: &str = include_str!("../resources/gitlab.svg");
+pub const TRASH_SVG: &str = include_str!("../resources/trash.svg");
+pub const TRASH_RED_SVG: &str = include_str!("../resources/trash-red.svg");
+pub const ENABLE_SVG: &str = include_str!("../resources/enable.svg");
+pub const ENABLE_GREEN_SVG: &str = include_str!("../resources/enable-green.svg");
+pub const DISABLE_SVG: &str = include_str!("../resources/disable.svg");
+pub const DISABLE_RED_SVG: &str = include_str!("../resources/disable-red.svg");
+pub const GOOGLEPLAY_SVG: &str = include_str!("../resources/googleplay.svg");
+pub const REDDIT_SVG: &str = include_str!("../resources/reddit.svg");
+pub const DISCORD_SVG: &str = include_str!("../resources/discord.svg");
+pub const MATRIX_SVG: &str = include_str!("../resources/matrix.svg");
+pub const TELEGRAM_SVG: &str = include_str!("../resources/telegram.svg");
+pub const YOUTUBE_SVG: &str = include_str!("../resources/youtube.svg");
+pub const UP_SVG: &str = include_str!("../resources/up.svg");
+pub const DOWN_SVG: &str = include_str!("../resources/down.svg");
+pub const STOP_SVG: &str = include_str!("../resources/stop.svg");
