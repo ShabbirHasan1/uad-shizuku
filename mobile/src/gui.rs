@@ -615,6 +615,15 @@ impl UadShizukuApp {
         // === settings dialog end
 
         // === ADB installation dialog
+        #[cfg(any(
+            target_os = "linux",
+            target_os = "macos",
+            target_os = "freebsd",
+            target_os = "dragonfly",
+            target_os = "netbsd",
+            target_os = "openbsd",
+            target_os = "windows"
+        ))]
         self.show_adb_install_dialog(ui.ctx());
         // === ADB installation dialog end
     }
@@ -1902,25 +1911,25 @@ impl UadShizukuApp {
                             ui.label("PowerShell - Run as Administrator:");
                             ui.add_space(4.0);
 
-//                             let windows_cmd = r#"# Download and extract platform-tools
-// $sdkPath = "$env:LOCALAPPDATA\Android\Sdk"
-// $ptPath = "$sdkPath\platform-tools"
-// New-Item -ItemType Directory -Force -Path $sdkPath | Out-Null
-// Invoke-WebRequest -Uri "https://dl.google.com/android/repository/platform-tools-latest-windows.zip" -OutFile "$env:TEMP\platform-tools.zip"
-// Expand-Archive -Path "$env:TEMP\platform-tools.zip" -DestinationPath $sdkPath -Force
-// Remove-Item "$env:TEMP\platform-tools.zip"
+                            let windows_cmd = r#"# Download and extract platform-tools
+$sdkPath = "$env:LOCALAPPDATA\Android\Sdk"
+$ptPath = "$sdkPath\platform-tools"
+New-Item -ItemType Directory -Force -Path $sdkPath | Out-Null
+Invoke-WebRequest -Uri "https://dl.google.com/android/repository/platform-tools-latest-windows.zip" -OutFile "$env:TEMP\platform-tools.zip"
+Expand-Archive -Path "$env:TEMP\platform-tools.zip" -DestinationPath $sdkPath -Force
+Remove-Item "$env:TEMP\platform-tools.zip"
 
-// # Add to PATH permanently via registry
-// $currentPath = [Environment]::GetEnvironmentVariable("Path", "User")
-// if ($currentPath -notlike "*$ptPath*") {
-// [Environment]::SetEnvironmentVariable("Path", "$currentPath;$ptPath", "User")
-// Write-Host "Added $ptPath to user PATH. Restart your terminal."
-// } else {
-// Write-Host "Path already contains platform-tools."
-// }
-// Write-Host "Installation complete. Run 'adb version' in a new terminal to verify."
-// "#;
-                            let windows_cmd = "";
+# Add to PATH permanently via registry
+$currentPath = [Environment]::GetEnvironmentVariable("Path", "User")
+if ($currentPath -notlike "*$ptPath*") {
+[Environment]::SetEnvironmentVariable("Path", "$currentPath;$ptPath", "User")
+Write-Host "Added $ptPath to user PATH. Restart your terminal."
+} else {
+Write-Host "Path already contains platform-tools."
+}
+Write-Host "Installation complete. Run 'adb version' in a new terminal to verify."
+"#;
+                            // let windows_cmd = "";
 
                             ui.add(egui::TextEdit::multiline(&mut windows_cmd.to_string())
                                 .code_editor()
@@ -1932,72 +1941,69 @@ impl UadShizukuApp {
                             }
                         }
                         "macos" => {
-                            ui.add_space(12.0);
-                            ui.label("For Fish shell (~/.config/fish/config.fish):");
+                            ui.label("For Zsh (~/.zshrc):");
                             ui.add_space(4.0);
 
-//                             let macos_fish_cmd = r#"# Download and extract platform-tools
-// set SDK_PATH "$HOME/Library/Android/sdk"
-// set PT_PATH "$SDK_PATH/platform-tools"
-// mkdir -p "$SDK_PATH"
-// curl -o /tmp/platform-tools.zip https://dl.google.com/android/repository/platform-tools-latest-darwin.zip
-// unzip -o /tmp/platform-tools.zip -d "$SDK_PATH"
-// rm /tmp/platform-tools.zip
+                            let macos_zsh_cmd = r#"# Download and extract platform-tools
+SDK_PATH="$HOME/Library/Android/sdk"
+PT_PATH="$SDK_PATH/platform-tools"
+mkdir -p "$SDK_PATH"
+curl -o /tmp/platform-tools.zip https://dl.google.com/android/repository/platform-tools-latest-darwin.zip
+unzip -o /tmp/platform-tools.zip -d "$SDK_PATH"
+rm /tmp/platform-tools.zip
 
-// # Add to PATH in fish config
-// set FISH_CONFIG "$HOME/.config/fish/config.fish"
-// if not grep -q "platform-tools" "$FISH_CONFIG" 2>/dev/null
-// echo "set -gx PATH \$PATH $PT_PATH" >> "$FISH_CONFIG"
-// echo "Added to $FISH_CONFIG. Run: source $FISH_CONFIG"
-// else
-// echo "PATH already configured."
-// end
-// echo "Run 'adb version' to verify installation."
-// "#;
-                            let macos_fish_cmd ="";
-
-                            ui.add(egui::TextEdit::multiline(&mut macos_fish_cmd.to_string())
+# Add to PATH in shell config
+SHELL_RC="$HOME/.zshrc"
+if ! grep -q "platform-tools" "$SHELL_RC" 2>/dev/null; then
+echo "export PATH=\"\$PATH:$PT_PATH\"" >> "$SHELL_RC"
+echo "Added to $SHELL_RC. Run: source $SHELL_RC"
+else
+echo "PATH already configured."
+fi
+echo "Run 'adb version' to verify installation."
+"#;
+                            // let macos_zsh_cmd = "";
+                            ui.add(egui::TextEdit::multiline(&mut macos_zsh_cmd.to_string())
                                 .code_editor()
                                 .desired_width(f32::INFINITY)
                                 .desired_rows(16));
 
-                            if ui.button("Copy Fish Commands").clicked() {
-                                ui.ctx().copy_text(macos_fish_cmd.to_string());
+                            if ui.button("Copy Zsh Commands").clicked() {
+                                ui.ctx().copy_text(macos_zsh_cmd.to_string());
                             }
                         }
                         _ => {
-                            // Linux (default)
+                            // Linux/BSD variants and other Unix-like systems - use Linux commands
                             ui.label("For Bash/Zsh (~/.bashrc or ~/.zshrc):");
                             ui.add_space(4.0);
 
-//                             let linux_bash_cmd = r#"# Download and extract platform-tools
-// SDK_PATH="$HOME/Android/Sdk"
-// PT_PATH="$SDK_PATH/platform-tools"
-// mkdir -p "$SDK_PATH"
-// curl -o /tmp/platform-tools.zip https://dl.google.com/android/repository/platform-tools-latest-linux.zip
-// unzip -o /tmp/platform-tools.zip -d "$SDK_PATH"
-// rm /tmp/platform-tools.zip
+                            let unix_cmd = r#"# Download and extract platform-tools
+SDK_PATH="$HOME/Android/Sdk"
+PT_PATH="$SDK_PATH/platform-tools"
+mkdir -p "$SDK_PATH"
+curl -o /tmp/platform-tools.zip https://dl.google.com/android/repository/platform-tools-latest-linux.zip
+unzip -o /tmp/platform-tools.zip -d "$SDK_PATH"
+rm /tmp/platform-tools.zip
 
-// # Add to PATH in shell config
-// SHELL_RC="$HOME/.bashrc"
-// [ -f "$HOME/.zshrc" ] && SHELL_RC="$HOME/.zshrc"
-// if ! grep -q "platform-tools" "$SHELL_RC" 2>/dev/null; then
-// echo "export PATH=\"\$PATH:$PT_PATH\"" >> "$SHELL_RC"
-// echo "Added to $SHELL_RC. Run: source $SHELL_RC"
-// else
-// echo "PATH already configured."
-// fi
-// echo "Run 'adb version' to verify installation."
-// "#;
-                            let linux_bash_cmd = "";
+# Add to PATH in shell config
+SHELL_RC="$HOME/.bashrc"
+[ -f "$HOME/.zshrc" ] && SHELL_RC="$HOME/.zshrc"
+if ! grep -q "platform-tools" "$SHELL_RC" 2>/dev/null; then
+echo "export PATH=\"\$PATH:$PT_PATH\"" >> "$SHELL_RC"
+echo "Added to $SHELL_RC. Run: source $SHELL_RC"
+else
+echo "PATH already configured."
+fi
+echo "Run 'adb version' to verify installation."
+"#;
 
-                            ui.add(egui::TextEdit::multiline(&mut linux_bash_cmd.to_string())
+                            ui.add(egui::TextEdit::multiline(&mut unix_cmd.to_string())
                                 .code_editor()
                                 .desired_width(f32::INFINITY)
                                 .desired_rows(16));
 
                             if ui.button("Copy Bash/Zsh Commands").clicked() {
-                                ui.ctx().copy_text(linux_bash_cmd.to_string());
+                                ui.ctx().copy_text(unix_cmd.to_string());
                             }
                         }
                     }
