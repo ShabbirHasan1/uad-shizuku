@@ -1741,74 +1741,74 @@ impl UadShizukuApp {
                         ui.checkbox(&mut self.settings_flush_hybridanalysis, tr!("flush"));
                     });
 
-                    // ui.add_space(8.0);
+                    ui.add_space(8.0);
 
-                    // ui.horizontal(|ui| {
-                    //     ui.checkbox(
-                    //         &mut self.settings.google_play_renderer,
-                    //         tr!("google-play-renderer"),
-                    //     );
-                    //     ui.label(tr!("google-play-renderer-desc"));
-                    //     ui.checkbox(&mut self.settings_flush_googleplay, tr!("flush"));
-                    // });
+                    ui.horizontal(|ui| {
+                        ui.checkbox(
+                            &mut self.settings.google_play_renderer,
+                            tr!("google-play-renderer"),
+                        );
+                        ui.label(tr!("google-play-renderer-desc"));
+                        ui.checkbox(&mut self.settings_flush_googleplay, tr!("flush"));
+                    });
 
-                    // ui.add_space(8.0);
+                    ui.add_space(8.0);
 
-                    // ui.horizontal(|ui| {
-                    //     ui.checkbox(&mut self.settings.fdroid_renderer, tr!("fdroid-renderer"));
-                    //     ui.label(tr!("fdroid-renderer-desc"));
-                    //     ui.checkbox(&mut self.settings_flush_fdroid, tr!("flush"));
-                    // });
+                    ui.horizontal(|ui| {
+                        ui.checkbox(&mut self.settings.fdroid_renderer, tr!("fdroid-renderer"));
+                        ui.label(tr!("fdroid-renderer-desc"));
+                        ui.checkbox(&mut self.settings_flush_fdroid, tr!("flush"));
+                    });
 
-                    // ui.add_space(8.0);
+                    ui.add_space(8.0);
 
-                    // ui.horizontal(|ui| {
-                    //     ui.checkbox(
-                    //         &mut self.settings.apkmirror_renderer,
-                    //         tr!("apkmirror-renderer"),
-                    //     );
-                    //     ui.label(tr!("apkmirror-renderer-desc"));
-                    //     ui.checkbox(&mut self.settings_flush_apkmirror, tr!("flush"));
-                    // });
+                    ui.horizontal(|ui| {
+                        ui.checkbox(
+                            &mut self.settings.apkmirror_renderer,
+                            tr!("apkmirror-renderer"),
+                        );
+                        ui.label(tr!("apkmirror-renderer-desc"));
+                        ui.checkbox(&mut self.settings_flush_apkmirror, tr!("flush"));
+                    });
 
-                    // ui.add_space(8.0);
+                    ui.add_space(8.0);
 
-                    // ui.horizontal(|ui| {
-                    //     ui.checkbox(
-                    //         &mut self.settings.apkmirror_auto_upload,
-                    //         tr!("apkmirror-auto-upload"),
-                    //     );
-                    //     ui.label(tr!("apkmirror-auto-upload-desc"));
-                    // });
+                    ui.horizontal(|ui| {
+                        ui.checkbox(
+                            &mut self.settings.apkmirror_auto_upload,
+                            tr!("apkmirror-auto-upload"),
+                        );
+                        ui.label(tr!("apkmirror-auto-upload-desc"));
+                    });
 
-                    // ui.add_space(8.0);
+                    ui.add_space(8.0);
 
-                    // ui.horizontal(|ui| {
-                    //     ui.label(tr!("apkmirror-email"));
-                    //     ui.add(
-                    //         egui::TextEdit::singleline(&mut self.settings.apkmirror_email)
-                    //             .desired_width(200.0)
-                    //             .hint_text(tr!("email-hint")),
-                    //     );
-                    // });
+                    ui.horizontal(|ui| {
+                        ui.label(tr!("apkmirror-email"));
+                        ui.add(
+                            egui::TextEdit::singleline(&mut self.settings.apkmirror_email)
+                                .desired_width(200.0)
+                                .hint_text(tr!("email-hint")),
+                        );
+                    });
 
-                    // ui.add_space(8.0);
+                    ui.add_space(8.0);
 
-                    // ui.horizontal(|ui| {
-                    //     ui.label(tr!("apkmirror-name"));
-                    //     ui.add(
-                    //         egui::TextEdit::singleline(&mut self.settings.apkmirror_name)
-                    //             .desired_width(200.0)
-                    //             .hint_text(tr!("name-hint")),
-                    //     );
-                    // });                    
+                    ui.horizontal(|ui| {
+                        ui.label(tr!("apkmirror-name"));
+                        ui.add(
+                            egui::TextEdit::singleline(&mut self.settings.apkmirror_name)
+                                .desired_width(200.0)
+                                .hint_text(tr!("name-hint")),
+                        );
+                    });                    
 
-                    // ui.add_space(8.0);
+                    ui.add_space(8.0);
 
-                    // ui.horizontal(|ui| {
-                    //     ui.checkbox(&mut self.settings_invalidate_cache, tr!("invalidate-cache"));
-                    //     ui.label(tr!("invalidate-cache-desc"));
-                    // });
+                    ui.horizontal(|ui| {
+                        ui.checkbox(&mut self.settings_invalidate_cache, tr!("invalidate-cache"));
+                        ui.label(tr!("invalidate-cache-desc"));
+                    });
 
                     ui.add_space(8.0);
 
