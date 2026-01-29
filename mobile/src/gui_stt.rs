@@ -106,6 +106,9 @@ pub struct UadShizukuApp {
     // ADB installation dialog state
     pub adb_install_dialog_open: bool,
 
+    // Disclaimer dialog state
+    pub disclaimer_dialog_open: bool,
+
     // Font selector state
     pub system_fonts: Vec<(String, String)>,
     pub system_fonts_loaded: bool,

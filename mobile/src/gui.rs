@@ -219,6 +219,9 @@ impl Default for UadShizukuApp {
             // ADB installation dialog (opens automatically if ADB not found)
             adb_install_dialog_open: which::which("adb").is_err(),
 
+            // Disclaimer dialog (shows on startup)
+            disclaimer_dialog_open: true,
+
             // Font selector state
             system_fonts: Vec::new(),
             system_fonts_loaded: false,
@@ -626,6 +629,8 @@ impl UadShizukuApp {
         ))]
         self.show_adb_install_dialog(ui.ctx());
         // === ADB installation dialog end
+
+        
     }
 
     fn show_menus(&mut self, ctx: &egui::Context) {
@@ -2034,6 +2039,36 @@ echo "Run 'adb version' to verify installation."
                 self.retrieve_adb_users();
                 self.retrieve_installed_packages();
             }
+        }
+
+        // Disclaimer dialog
+        if self.disclaimer_dialog_open {
+            let disclaimer_title = tr!("disclaimer-title");
+            let disclaimer_no_user_data = tr!("disclaimer-no-user-data");
+            let disclaimer_uninstall_warning = tr!("disclaimer-uninstall-warning");
+
+            dialog(
+                "disclaimer_dialog",
+                &disclaimer_title,
+                &mut self.disclaimer_dialog_open,
+            )
+            .content(|ui| {
+                ui.vertical(|ui| {
+                    ui.set_width(400.0);
+
+                    ui.add_space(8.0);
+
+                    ui.label(&disclaimer_no_user_data);
+
+                    ui.add_space(8.0);
+
+                    ui.label(&disclaimer_uninstall_warning);
+
+                    ui.add_space(16.0);
+                });
+            })
+            .action(tr!("ok"), || {})
+            .show(ctx);
         }
     }
 

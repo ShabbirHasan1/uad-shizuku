@@ -121,3 +121,8 @@ usage-description = 애플리케이션 사용량 :
 language = 언어:
 font = 글꼴:
 text-style = 텍스트 스타일:
+
+# Disclaimer Dialog
+disclaimer-title = ⚠ 경고
+disclaimer-no-user-data = • 이 앱은 사용자 파일이나 사용자 데이터를 조작하지 않습니다.
+disclaimer-uninstall-warning = • 앱 제거 시 해당 앱의 사용자 데이터도 함께 삭제됩니다. 앱 제거 시 주의하세요.

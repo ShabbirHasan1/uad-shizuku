@@ -121,3 +121,8 @@ usage-description = Application Usage :
 language = Language:
 font = Font:
 text-style = Text Style:
+
+# Disclaimer Dialog
+disclaimer-title = ⚠ Warning
+disclaimer-no-user-data = • This app does not operate over user files or any user data.
+disclaimer-uninstall-warning = • Uninstall action will delete app with userdata for the app. Make careful to uninstall app.
