@@ -1,3 +1,5 @@
+# example configuration : https://github.com/nikescar/mdx-sitegen-solidbase/blob/main/_config.yml
+# example configuration : https://github.com/kobaltedev/solidbase/blob/main/docs/app.config.ts
 # configuration for vite.docs solidbase https://github.com/nikescar/mdx-sitegen-solidbase
 # Site settings
 title: uad-shizuku
@@ -44,6 +46,12 @@ include:
   - imgs
   - README.md
   - google1fadff23415819bc.html
+  - docs
+  - CREDITS.md
+  - CODE_OF_CONDUCT.md
+  - PRIVACYPOLICY.md
+  - SECURITY.md
+  - kr
 
 # Theme settings
 theme_upstream: 'https://github.com/nikescar/mdx-sitegen-solidbase'
@@ -51,8 +59,26 @@ theme_config:
   social_links:
     gitHub: 'https://github.com/nikescar/uad-shizuku'
   nav:
+    Docs: /docs
     Readme: /readme
+    Credits: /credits
+    # "Code of Conduct": /code_of_conduct
+    # "Privacy Policy": /privacypolicy
+    # Security: /security
   sidebar:
+    - Docs:
+      - Guide: []
+          # "Getting Started": /getting-started
+          # Features: /features
+          # Configuration: /configuration
+          # Deployment: /deployment
+    - Readme:
+      - Readme: []
+    - Credits: 
+      - Credits: []
+    # - "Code of Conduct": /code_of_conduct
+    # - "Privacy Policy": /privacypolicy
+    # - Security: /security
 
 # gitHub pages deployment(gh-pages.publish) settings # https://github.com/new
 # 1. Create a GitHub repository
@@ -79,3 +105,41 @@ deployment: # https://developers.cloudflare.com/pages/how-to/use-direct-upload-w
   provider: 'cloudflare-pages'
   project: 'uad-shizuku'
   cloudflare_pages_token: ${{ secrets.CLOUDFLARE_PAGES_TOKEN }}
+
+locales:
+  kr: # /kr/*
+    label: "한국어"
+    themeConfig:
+      nav:
+        - text: "문서"
+          link: "/docs"
+        - text: "리드미"
+          link: "/readme"
+        - text: "크레딧"
+          link: "/credits"
+      sidebar:
+        "/docs":
+          - title: "가이드"
+            collapsed: false
+            items: []
+              # - title: "시작하기"
+              #   link: "/getting-started"
+              # - title: "기능"
+              #   link: "/features"
+              # - title: "설정"
+              #   link: "/configuration"
+              # - title: "배포"
+              #   link: "/deployment"
+          # - title: "Fonctionnalités"
+          #   items:
+          #     - title: "Extensions Markdown"
+          #       link: "/markdown"
+        "/readme":
+          - title: "리드미"
+            collapsed: false
+            items: []
+        "/credits":
+          - title: "크레딧"
+            collapsed: false
+            items: []
+

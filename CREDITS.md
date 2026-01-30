@@ -1,5 +1,15 @@
 # Credits
 
+## Reference Projects
+
+| Project | Summary | License |
+|---------|---------|---------|
+| [Universal Android Debloater Next Generation](https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation) | Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices. Improve your privacy, the security and battery life of your device. | GPL-3.0 |
+| [bevy_game_template](https://github.com/NiklasEi/bevy_game_template) | Template for Bevy game projects | MIT/Apache-2.0 |
+| [chatGPTBox](https://github.com/ChatGPTBox-dev/chatGPTBox) | ChatGPT browser extension | MIT |
+| [android-activity](https://github.com/rust-mobile/android-activity) | Android activity glue crate | MIT/Apache-2.0 |
+| [ai-rules](https://github.com/block/ai-rules) | AI rules configuration | Apache-2.0 |
+
 ## Rust Libraries
 
 | Project | Summary | Version (accepted) | Version (last resolved) | License |
@@ -73,15 +83,6 @@
 |---------|---------|-------------------|-------------------------|---------|
 | [sqlite-wasm-vfs](https://crates.io/crates/sqlite-wasm-vfs) | SQLite VFS for WebAssembly | 0.1.1 | 0.1.1 | MIT |
 | [sqlite-wasm-rs](https://crates.io/crates/sqlite-wasm-rs) | SQLite for WebAssembly | 0.5.1 | 0.5.1 | MIT/Apache-2.0 |
-
-## Reference Projects
-
-| Project | Summary | License |
-|---------|---------|---------|
-| [bevy_game_template](https://github.com/NiklasEi/bevy_game_template) | Template for Bevy game projects | MIT/Apache-2.0 |
-| [chatGPTBox](https://github.com/ChatGPTBox-dev/chatGPTBox) | ChatGPT browser extension | MIT |
-| [android-activity](https://github.com/rust-mobile/android-activity) | Android activity glue crate | MIT/Apache-2.0 |
-| [ai-rules](https://github.com/block/ai-rules) | AI rules configuration | Apache-2.0 |
 
 ## Assets
 
